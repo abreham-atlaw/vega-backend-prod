@@ -5,6 +5,10 @@ from apps.core.models import QueryParams, Song, GenerationRequest
 
 class Generator(ABC):
 
+	def _update_status(self, request: GenerationRequest, status: GenerationRequest.Status):
+		request.status = status.value
+		request.save()
+
 	@abstractmethod
 	def generate(self, query_params: QueryParams, request: GenerationRequest) -> Song:
 		pass

@@ -38,6 +38,7 @@ class Song(models.Model):
 	cover = models.URLField()
 	lyrics = models.TextField()
 	create_datetime = models.DateTimeField(auto_now_add=True)
+	duration = models.FloatField(null=True)
 
 
 class GenerationRequest(models.Model):
@@ -45,17 +46,17 @@ class GenerationRequest(models.Model):
 	class Status(Enum):
 
 		none = 0
-		mix = 1
-		instrumental = 2
-		lyrics = 3
-		vocal = 4
+		instrumental = 1
+		lyrics = 2
+		vocal = 3
+		mix = 4
 		done = 5
 
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4)
 	song = models.ForeignKey(Song, on_delete=models.CASCADE, null=True)
-	status = models.CharField(
+	status = models.IntegerField(
 		choices=[
-			(status.name, status.name)
+			(status.value, status.name)
 			for status in [
 				Status.none,
 				Status.instrumental,
@@ -66,6 +67,6 @@ class GenerationRequest(models.Model):
 			]
 		],
 		max_length=255,
-		default=Status.none.name
+		default=Status.none.value
 	)
 
