@@ -26,7 +26,7 @@ class MockGenerator(Generator):
 			title="Echoes in the Night",
 			audio="https://www.dropbox.com/scl/fi/pct36wssa6ug85m8wdjtd/1693508148.414699.mp3?rlkey=6j41bktwj5bjltg0umyvak358&dl=0&raw=1",
 			lyrics="""
-Verse 1)
+(Verse 1)
 In the city streets, the lights are bright
 But they can't illuminate the darkness of my night
 I'm lost in the shadows, can't find my way
@@ -75,7 +75,6 @@ I'll dance in the dark, with tears in my eyes
 For the pain that I feel, it's my only disguise.
 """,
 			cover="https://www.dropbox.com/scl/fi/65jq2zoqg5l3o203aprq4/1693508148.414699.png?rlkey=bfngqxunb01xm86dam00xe3o8&dl=0&raw=1",
-			duration=185
 		)
 		song.save()
 		request.song = song

@@ -13,12 +13,12 @@ class QueryParams(models.Model):
 	mood = models.CharField(max_length=255, null=True)
 
 	@property
-	def lyrics(self) -> 'typing.List[Lyrics]':
-		return list(Lyrics.objects.filter(query_params=id))
+	def lyrics(self) -> 'typing.List[str]':
+		return [lyrics.value for lyrics in Lyrics.objects.filter(query_params=self)]
 
 	@property
-	def instruments(self) -> 'typing.List[Instrumental]':
-		return list(Instrumental.objects.filter(query_params=id))
+	def instruments(self) -> 'typing.List[str]':
+		return [instrument.value for instrument in Instrumental.objects.filter(query_params=self)]
 
 
 class Lyrics(models.Model):

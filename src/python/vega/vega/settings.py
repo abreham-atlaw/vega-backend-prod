@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os.path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -131,5 +131,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-DROPBOX_API_KEY = "sl.BlI8QFV5njaIn-Xf-DtUi39GMzVI9hYsUhtu94_O-7JedBLFhP-USgPSeRRPlnvO3g4Nw4yPOjVoMj-3B8SSL24ixT6FYdggZ76iTkwzBV0ogn8en7aW0iidWdlkroORZB_LMUQ3rUK2"
+DROPBOX_API_KEY = "sl.BlSGoH7gJoSHw3bPrp_uxdFMXqQr8-18Tn7KzpLzSXhTdUHYEZZv9_N76Gm_TK5k3KqddpLIK0u6OplE0Bkv7BOcvNwsyUnYMZlkvQ_IDlvhChn2cEevOZLruGH6vCHAD4E-GliANGaT2z4"
 DROPBOX_FOLDER = "/VegaStorage"
+
+GAI_URL = "https://llmchat-server.vercel.app/api"
+TMP_PATH = os.path.abspath("/tmp/")

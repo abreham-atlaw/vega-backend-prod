@@ -1,4 +1,0 @@
-
-
-class InvalidNetworkMethod(Exception):
-	pass

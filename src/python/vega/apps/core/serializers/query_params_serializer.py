@@ -35,7 +35,7 @@ class QueryParamsSerializer(serializers.Serializer):
                 value=instrument,
                 query_params=query_params
             )
-            for instrument in validated_data.get("instrument", [])
+            for instrument in validated_data.get("instruments", [])
         ]
 
         for foreign in lyrics + instruments:
