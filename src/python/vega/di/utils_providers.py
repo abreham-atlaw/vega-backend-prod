@@ -1,6 +1,6 @@
 from utils.generator import MockGenerator
 from utils.generator.generator import Generator
-from utils.mixer.mixbear_mixer import AudiodubMixer
+from utils.mixer.audiodub import AudiodubMixer
 from utils.mixer.mock_mixer import MockMixer
 from vega.settings import TMP_PATH
 from utils.mixer.mixer import Mixer
