@@ -5,6 +5,8 @@ from django.db import models
 
 import uuid
 
+from apps.authentication.models import VegaUser
+
 
 class QueryParams(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4)
@@ -39,6 +41,7 @@ class Song(models.Model):
 	lyrics = models.TextField()
 	create_datetime = models.DateTimeField(auto_now_add=True)
 	duration = models.FloatField(null=True)
+	user = models.ForeignKey(VegaUser, on_delete=models.SET_NULL, null=True, blank=True)
 
 
 class GenerationRequest(models.Model):

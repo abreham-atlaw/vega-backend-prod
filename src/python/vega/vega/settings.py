@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'rest_framework.authtoken',
 
     'apps.core',
+    'apps.authentication'
 ]
 
 MIDDLEWARE = [
@@ -52,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'vega.urls'
 
@@ -107,6 +110,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+	'DEFAULT_AUTHENTICATION_CLASSES': [
+		'rest_framework.authentication.TokenAuthentication'
+	],
+	'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
+}
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -130,8 +141,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = 'authentication.VegaUser'
 
-DROPBOX_API_KEY = "sl.BlSGoH7gJoSHw3bPrp_uxdFMXqQr8-18Tn7KzpLzSXhTdUHYEZZv9_N76Gm_TK5k3KqddpLIK0u6OplE0Bkv7BOcvNwsyUnYMZlkvQ_IDlvhChn2cEevOZLruGH6vCHAD4E-GliANGaT2z4"
+DROPBOX_API_KEY = "sl.BlXlzykxUbJVw1wCPuCKBWQXYLvwL1HMct3o0q7RDmFZai7SJ_mvNX947mUXTAh45E6UoheFg9G3UC22PaiL009fABmW_AYJb0g-oZP_fwbBy28HDXSTDfXQ9GIYGfv_DXg9_663Rkbivh4"
 DROPBOX_FOLDER = "/VegaStorage"
 
 GAI_URL = "https://llmchat-server.vercel.app/api"

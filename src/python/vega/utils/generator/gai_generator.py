@@ -29,11 +29,13 @@ class GAIGenerator(Generator):
 		lyrics = self.__llama2_executor.generate(query_params)
 		title = self.__llama2_title_executor.generate(query_params, lyrics)
 
+		self._update_status(request, GenerationRequest.Status.vocal)
+		vocals = self.__bark_executor.generate(query_params, lyrics)
+
 		self._update_status(request, GenerationRequest.Status.instrumental)
 		instrumental = self.__music_gen_executor.generate(query_params)
 
-		self._update_status(request, GenerationRequest.Status.vocal)
-		vocals = self.__bark_executor.generate(query_params, lyrics)
+
 
 		self._update_status(request, GenerationRequest.Status.mix)
 		mix = self.__mixer.mix(instrumental, vocals)

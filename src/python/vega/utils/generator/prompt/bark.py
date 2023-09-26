@@ -10,4 +10,4 @@ class BarkExecutor(GAIExecutor):
 		return output
 
 	def _prepare_prompt(self, query_params: QueryParams, lyrics: str) -> typing.Any:
-		return f"♪ {lyrics} ♪"
+		return f"♪ {lyrics[:100]} ♪"

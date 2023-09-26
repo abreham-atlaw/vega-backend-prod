@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.request import Request
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 from apps.core.models import GenerationRequest, QueryParams
 from apps.core.serializers.generation_request_serializer import GenerationRequestSerializer
@@ -13,6 +14,8 @@ from utils.generator import GenerationThread
 
 
 class GenerateView(APIView):
+
+	permission_classes = [IsAuthenticated]
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
@@ -41,6 +44,8 @@ class GenerateView(APIView):
 
 
 class GenerationStatusView(APIView):
+
+	permission_classes = [IsAuthenticated]
 
 	def get(self, request: Request):
 		request_id = request.query_params.get('id')
