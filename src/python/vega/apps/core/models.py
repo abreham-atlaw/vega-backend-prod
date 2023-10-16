@@ -23,6 +23,12 @@ class QueryParams(models.Model):
 		return [instrument.value for instrument in Instrumental.objects.filter(query_params=self)]
 
 
+class QueryParamsSample(QueryParams):
+
+	title = models.CharField(max_length=255, null=True)
+	cover = models.URLField()
+
+
 class Lyrics(models.Model):
 	value = models.CharField(max_length=255)
 	query_params = models.ForeignKey(QueryParams, on_delete=models.CASCADE)

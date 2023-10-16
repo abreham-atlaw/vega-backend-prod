@@ -4,9 +4,9 @@ from apps.core.models import QueryParams, GenerationRequest, Song
 from di.lib_providers import LibProviders
 from di.utils_providers import UtilsProviders
 from utils.generator import Generator
-from utils.generator.prompt.bark import BarkExecutor
-from utils.generator.prompt.llama2 import Llama2LyricsExecutor, Llama2TitleExecutor
-from utils.generator.prompt.musicgen import MusicGenPreparer
+from utils.generator.executors.bark import BarkExecutor
+from utils.generator.executors.text import TextLMLyricsExecutor, TextLMTitleExecutor
+from utils.generator.executors.musicgen import MusicGenPreparer
 
 
 class GAIGenerator(Generator):
@@ -18,24 +18,22 @@ class GAIGenerator(Generator):
 
 		self.__music_gen_executor = MusicGenPreparer(self.__music_gen)
 		self.__bark_executor = BarkExecutor(self.__bark)
-		self.__llama2_executor = Llama2LyricsExecutor(self.__llama2)
-		self.__llama2_title_executor = Llama2TitleExecutor(self.__llama2)
+		self.__llama2_executor = TextLMLyricsExecutor(self.__llama2)
+		self.__llama2_title_executor = TextLMTitleExecutor(self.__llama2)
 
 		self.__mixer = UtilsProviders.provide_mixer()
 		self.__file_storage = LibProviders.provide_file_storage()
 
 	def generate(self, query_params: QueryParams, request: GenerationRequest) -> Song:
+		self._update_status(request, GenerationRequest.Status.instrumental)
+		instrumental = self.__music_gen_executor.generate(query_params)
+
 		self._update_status(request, GenerationRequest.Status.lyrics)
 		lyrics = self.__llama2_executor.generate(query_params)
 		title = self.__llama2_title_executor.generate(query_params, lyrics)
 
 		self._update_status(request, GenerationRequest.Status.vocal)
 		vocals = self.__bark_executor.generate(query_params, lyrics)
-
-		self._update_status(request, GenerationRequest.Status.instrumental)
-		instrumental = self.__music_gen_executor.generate(query_params)
-
-
 
 		self._update_status(request, GenerationRequest.Status.mix)
 		mix = self.__mixer.mix(instrumental, vocals)

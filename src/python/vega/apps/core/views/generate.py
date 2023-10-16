@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from apps.core.models import GenerationRequest, QueryParams
 from apps.core.serializers.generation_request_serializer import GenerationRequestSerializer
+from apps.core.serializers.query_params_sample_serializer import QueryParamsSampleSerializer
 from apps.core.serializers.query_params_serializer import QueryParamsSerializer
 from di.utils_providers import UtilsProviders
 from utils.generator import GenerationThread
@@ -15,7 +16,7 @@ from utils.generator import GenerationThread
 
 class GenerateView(APIView):
 
-	permission_classes = [IsAuthenticated]
+	# permission_classes = [IsAuthenticated]
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
@@ -45,13 +46,29 @@ class GenerateView(APIView):
 
 class GenerationStatusView(APIView):
 
-	permission_classes = [IsAuthenticated]
+	# permission_classes = [IsAuthenticated]
 
 	def get(self, request: Request):
 		request_id = request.query_params.get('id')
 		generation_request = get_object_or_404(GenerationRequest, id=request_id)
 
 		serializer = GenerationRequestSerializer(instance=generation_request)
+		return Response(
+			serializer.data
+		)
+
+
+class RecommendationsView(APIView):
+
+	permission_classes = [IsAuthenticated]
+
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.__recommender = UtilsProviders.provide_recommender()
+
+	def get(self, request: Request) -> Response:
+		params = self.__recommender.recommend(request.user)
+		serializer = QueryParamsSampleSerializer(instance=params, many=True)
 		return Response(
 			serializer.data
 		)

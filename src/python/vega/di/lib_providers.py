@@ -1,6 +1,6 @@
 from lib.file_storage import FileStorage, DropboxClient
-from lib.gai_client import MusicGenClient, BarkClient, Llama2Client
-from vega.settings import GAI_URL, TMP_PATH, DROPBOX_FOLDER, DROPBOX_API_KEY
+from lib.gai_client import MusicGenClient, BarkClient, Llama2Client, ChatGPT
+from vega.settings import GAI_URL, TMP_PATH, DROPBOX_FOLDER, DROPBOX_API_KEY, OPENAI_KEY
 
 
 class LibProviders:
@@ -21,9 +21,13 @@ class LibProviders:
 
 	@staticmethod
 	def provide_llama2() -> Llama2Client:
-		return Llama2Client(
-			url=GAI_URL
+		return ChatGPT(
+			OPENAI_KEY,
+			"poet"
 		)
+		# return Llama2Client(
+		# 	url=GAI_URL
+		# )
 
 	@staticmethod
 	def provide_file_storage() -> FileStorage:

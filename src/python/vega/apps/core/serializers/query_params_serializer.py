@@ -12,6 +12,7 @@ class QueryParamsSerializer(serializers.Serializer):
 
     genre = serializers.CharField(max_length=255, allow_blank=True)
     era = serializers.CharField(max_length=255, allow_blank=True)
+    mood = serializers.CharField(max_length=255, allow_blank=True)
     lyrics = serializers.ListField(child=serializers.CharField(), allow_null=True)
     instruments = serializers.ListField(child=serializers.CharField(), allow_null=True)
 
@@ -40,7 +41,5 @@ class QueryParamsSerializer(serializers.Serializer):
 
         for foreign in lyrics + instruments:
             foreign.save()
-
-
 
         return query_params

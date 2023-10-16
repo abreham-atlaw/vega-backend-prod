@@ -4,10 +4,10 @@ import re
 from abc import ABC, abstractmethod
 
 from apps.core.models import QueryParams
-from utils.generator.prompt.prompt_preparer import GAIExecutor
+from utils.generator.executors.prompt_preparer import GAIExecutor
 
 
-class Llama2Executor(GAIExecutor, ABC):
+class TextLMExecutor(GAIExecutor, ABC):
 
 	def __init__(self, *args, delimiter="```", **kwargs):
 		super().__init__(*args, **kwargs)
@@ -40,22 +40,25 @@ class Llama2Executor(GAIExecutor, ABC):
 			return output
 
 
-class Llama2LyricsExecutor(Llama2Executor):
+class TextLMLyricsExecutor(TextLMExecutor):
 
 	def _prepare_output_(self, output) -> typing.Any:
-		return output
+		return output.strip()
 
 	def _prepare_prompt_(self, query_params: QueryParams, *args, **kwargs) -> typing.Any:
 		return f"Write a lyrics for a {query_params.era} {query_params.genre} track with {query_params.mood} mood. It should be {', '.join(query_params.lyrics)}. It should also be suitable for an instrumental with {', '.join(query_params.instruments)}."
 
 
-class Llama2TitleExecutor(Llama2Executor):
+class TextLMTitleExecutor(TextLMExecutor):
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, delimiter="\"", **kwargs)
 
 	def _prepare_output_(self, output) -> typing.Any:
 		return output[:40]
+
+	def _restart(self, output, *args, **kwargs) -> bool:
+		return output == ""
 
 	def _prepare_prompt_(self, query_params: QueryParams, lyrics: str) -> typing.Any:
 		return f"Give me one title for the track with these lyrics\n\n{lyrics}."

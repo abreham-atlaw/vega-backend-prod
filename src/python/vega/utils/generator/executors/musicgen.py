@@ -1,7 +1,7 @@
 import typing
 
 from apps.core.models import QueryParams
-from utils.generator.prompt.prompt_preparer import GAIExecutor
+from utils.generator.executors.prompt_preparer import GAIExecutor
 
 
 class MusicGenPreparer(GAIExecutor):

@@ -149,8 +149,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'authentication.VegaUser'
 
-DROPBOX_API_KEY = "sl.BlXlzykxUbJVw1wCPuCKBWQXYLvwL1HMct3o0q7RDmFZai7SJ_mvNX947mUXTAh45E6UoheFg9G3UC22PaiL009fABmW_AYJb0g-oZP_fwbBy28HDXSTDfXQ9GIYGfv_DXg9_663Rkbivh4"
+DROPBOX_API_KEY = "sl.BoBu2dsT2D-gPwhK7CgS2MzFts8_EUWnEBL_AhHIw_1f800tDoohRAf1qf9YUgboZ_UMVRZuo8LqO2LGE2JAjuizcpmIfDPRgd2697NKh4ZFZE6FFPZhf_RQe4sOtqmGPNq9LhebnFhFjYA"
 DROPBOX_FOLDER = "/VegaStorage"
+
+OPENAI_KEY = "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"
 
 GAI_URL = "https://llmchat-server.vercel.app/api"
 TMP_PATH = os.path.abspath("/tmp/")
