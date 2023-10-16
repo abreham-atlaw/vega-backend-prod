@@ -152,7 +152,7 @@ AUTH_USER_MODEL = 'authentication.VegaUser'
 DROPBOX_API_KEY = "sl.BoBu2dsT2D-gPwhK7CgS2MzFts8_EUWnEBL_AhHIw_1f800tDoohRAf1qf9YUgboZ_UMVRZuo8LqO2LGE2JAjuizcpmIfDPRgd2697NKh4ZFZE6FFPZhf_RQe4sOtqmGPNq9LhebnFhFjYA"
 DROPBOX_FOLDER = "/VegaStorage"
 
-OPENAI_KEY = "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"
+OPENAI_KEY = os.environ["OPENAI_KEY"]
 
 GAI_URL = "https://llmchat-server.vercel.app/api"
 TMP_PATH = os.path.abspath("/tmp/")
