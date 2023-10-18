@@ -10,5 +10,8 @@ class Generator(ABC):
 		request.save()
 
 	@abstractmethod
-	def generate(self, query_params: QueryParams, request: GenerationRequest) -> Song:
+	def generate(self, query_params: QueryParams, request: GenerationRequest):
+		pass
+
+	def generate_raw_query(self, query: str, request: GenerationRequest):
 		pass

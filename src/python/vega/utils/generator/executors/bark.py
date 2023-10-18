@@ -22,5 +22,5 @@ class BarkExecutor(GAIExecutor):
 		cleaned = BarkExecutor.extract_lyrics(lyrics)
 		return cleaned.split("\n\n")[0].replace("\n", " ")
 
-	def _prepare_prompt(self, query_params: QueryParams, lyrics: str) -> typing.Any:
+	def _prepare_prompt(self, lyrics: str) -> typing.Any:
 		return f"♪ [rap] {self.__format_lyrics(lyrics)} [rap] ♪"

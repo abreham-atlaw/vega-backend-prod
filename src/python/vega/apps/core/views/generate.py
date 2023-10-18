@@ -1,3 +1,4 @@
+import typing
 
 from django.shortcuts import get_object_or_404
 
@@ -22,10 +23,11 @@ class GenerateView(APIView):
 		super().__init__(*args, **kwargs)
 		self.__generator = UtilsProviders.provide_generator()
 
-	def __start_generation(self, query_params: QueryParams, request: GenerationRequest):
+	def _start_generation(self, request: GenerationRequest, query_params: typing.Optional[QueryParams] = None, raw_query: typing.Optional[str] = None):
 		thread = GenerationThread(
 			query_params=query_params,
 			request=request,
+			raw_query=raw_query,
 			generator=self.__generator
 		)
 		thread.start()
@@ -37,7 +39,26 @@ class GenerateView(APIView):
 		serializer.is_valid(raise_exception=True)
 		query_params = serializer.create(serializer.validated_data)
 
-		self.__start_generation(query_params, generation_request)
+		self._start_generation(generation_request, query_params=query_params)
+
+		return Response({
+			"request_id": generation_request.id
+		})
+
+
+class RawGenerateView(GenerateView):
+
+	def post(self, request: Request) -> Response:
+		generation_request: GenerationRequest = GenerationRequest.objects.create()
+
+		query = request.data.get("query")
+		if query is None:
+			return Response("{query: This field is required}", status=400)
+
+		self._start_generation(
+			generation_request,
+			raw_query=query
+		)
 
 		return Response({
 			"request_id": generation_request.id

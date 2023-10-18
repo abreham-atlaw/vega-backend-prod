@@ -6,7 +6,7 @@ from utils.generator.generator import Generator
 
 class MockGenerator(Generator):
 
-	def generate(self, query_params: QueryParams, request: GenerationRequest) -> Song:
+	def __generate(self, request: GenerationRequest) -> Song:
 		self._update_status(request, GenerationRequest.Status.instrumental)
 		request.status = GenerationRequest.Status.instrumental.value
 		request.save()
@@ -64,10 +64,17 @@ My rhymes so sharp, they'll leave you in a coffin, so gruesome
 I'm the king of the throne, don't you forget it
 My flow's like a drill, it'll leave you in a pit
 """,
-			cover="https://www.dropbox.com/scl/fi/1716txvcn70by2kh1mcze/Rectangle-2_4.png?rlkey=vkqvr9w8ma6wgivpr1fmetudg&dl=0&raw=1",
+			cover="https://dl.dropboxusercontent.com/scl/fi/yp5goz0c3f9bezv1lrc0x/02.png?rlkey=jh8thuix6kb1n65q8cuy1em16&dl=0&raw=1",
 		)
 		song.save()
 		request.song = song
 
 		self._update_status(request, GenerationRequest.Status.done)
 
+		return song
+
+	def generate(self, query_params: QueryParams, request: GenerationRequest) -> Song:
+		return self.__generate(request)
+
+	def generate_raw_query(self, query: str, request: GenerationRequest) -> Song:
+		return self.__generate(request)
