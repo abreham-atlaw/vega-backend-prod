@@ -149,7 +149,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'authentication.VegaUser'
 
-DROPBOX_API_KEY = "sl.BoBu2dsT2D-gPwhK7CgS2MzFts8_EUWnEBL_AhHIw_1f800tDoohRAf1qf9YUgboZ_UMVRZuo8LqO2LGE2JAjuizcpmIfDPRgd2697NKh4ZFZE6FFPZhf_RQe4sOtqmGPNq9LhebnFhFjYA"
+DROPBOX_API_KEY = os.environ["DROPBOX_KEY"]
 DROPBOX_FOLDER = "/VegaStorage"
 
 OPENAI_KEY = os.environ["OPENAI_KEY"]

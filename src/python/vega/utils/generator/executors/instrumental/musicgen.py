@@ -4,7 +4,7 @@ from apps.core.models import QueryParams
 from utils.generator.executors.prompt_preparer import GAIExecutor
 
 
-class MusicGenPreparer(GAIExecutor):
+class MusicGenExecutor(GAIExecutor):
 
 	def _prepare_output(self, output) -> typing.Any:
 		return output
