@@ -11,15 +11,22 @@ The vega project is structured as follows:
     https://github.com/abreham-atlaw/vega-web-client: This repository contains source code for the Vega Web Client(Studio)
 
 <h2>Project Structure</h2>
+
+This Python project has the following modules:
+
 - `src`: This is the root directory of the project.
-  - `python`: This directory contains all the Python source code for the project.
-    - `vega`: This is the main module of the project.
-      - `common`: This module contains common utilities and libraries used across the project. It includes submodules like `file_storage`, `gai_client`, and `network`.
-      - `dependency_injection`: This module manages dependencies within the project.
-      - `features`: This module contains the main features of the project, including `authentication` and `core`.
-      - `utils`: This module contains utility functions and classes, including submodules like `generator`, `mixer`, and `recommendation`.
-      - `vega`: This module contains the main application settings and configurations.
-    - `manage.py`: This is a command-line utility that lets you interact with this Django project in various ways.
+- `python`: This directory contains all the Python source code for the project.
+- `vega`: This is the main module of the project.
+  - `common`: This module contains common utilities and libraries used across the project. It includes submodules like `file_storage`, `gai_client`, and `network`.
+  - `dependency_injection`: This module manages dependencies within the project.
+  - `features`: This module contains the main features of the project, including `authentication` and `core`.
+  - `utils`: This module contains utility functions and classes, including submodules like `generator`, `mixer`, and `recommendation`.
+  - `vega`: This module contains the main application settings and configurations.
+- `manage.py`: This is a command-line utility that lets you interact with this Django project in various ways.
+
+Each of these directories contains Python files (`.py`) that define various functionalities of your project. For example, files named `__init__.py` are used to mark directories on disk as Python package directories.
+
+Please note that this is a high-level overview. Each file and directory in your project has a specific purpose and contributes to the overall functionality of your application. If you need more detailed information about a specific file or directory, feel free to ask!
 
 <h2>Purpose</h2>
 
