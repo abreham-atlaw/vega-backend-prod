@@ -10,6 +10,16 @@ The vega project is structured as follows:
     https://github.com/abreham-atlaw/oscillate/: This repository contains the source code for training our vocal model.
     https://github.com/abreham-atlaw/vega-web-client: This repository contains source code for the Vega Web Client(Studio)
 
+<h2>Project Structure</h2>
+- `src`: This is the root directory of the project.
+  - `python`: This directory contains all the Python source code for the project.
+    - `vega`: This is the main module of the project.
+      - `common`: This module contains common utilities and libraries used across the project. It includes submodules like `file_storage`, `gai_client`, and `network`.
+      - `dependency_injection`: This module manages dependencies within the project.
+      - `features`: This module contains the main features of the project, including `authentication` and `core`.
+      - `utils`: This module contains utility functions and classes, including submodules like `generator`, `mixer`, and `recommendation`.
+      - `vega`: This module contains the main application settings and configurations.
+    - `manage.py`: This is a command-line utility that lets you interact with this Django project in various ways.
 
 <h2>Purpose</h2>
 
