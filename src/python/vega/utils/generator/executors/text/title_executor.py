@@ -3,7 +3,7 @@ import typing
 import re
 from abc import ABC, abstractmethod
 
-from apps.core.models import QueryParams
+from features.core.models import QueryParams
 from utils.generator.executors.prompt_preparer import GAIExecutor
 from utils.generator.executors.text.text_lm_executor import TextLMExecutor
 

@@ -12,7 +12,7 @@ class TextLMTitleExecutorTest(unittest.TestCase):
 		django.setup()
 
 	def test_functionality(self):
-		from di.lib_providers import LibProviders
+		from dependency_injection.lib_providers import LibProviders
 		from utils.generator.executors.text import TitleExecutor
 
 		executor = TitleExecutor(

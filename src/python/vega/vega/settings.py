@@ -43,8 +43,8 @@ INSTALLED_APPS = [
 
     "corsheaders",
 
-    'apps.core',
-    'apps.authentication'
+    'features.core',
+    'features.authentication'
 ]
 
 MIDDLEWARE = [
@@ -136,7 +136,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+AUTH_USER_MODEL = 'authentication.VegaUser'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -149,10 +149,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'authentication.VegaUser'
 
-DROPBOX_API_KEY = os.environ["DROPBOX_KEY"]
+DROPBOX_API_KEY = os.environ.get("DROPBOX_KEY", "")
 DROPBOX_FOLDER = "/VegaStorage"
 
-OPENAI_KEY = os.environ["OPENAI_KEY"]
+OPENAI_KEY = os.environ.get("OPENAI_KEY", "")
 
 GAI_URL = "https://llmchat-server.vercel.app/api"
 TMP_PATH = os.path.abspath("/tmp/")

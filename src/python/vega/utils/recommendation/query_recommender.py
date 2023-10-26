@@ -1,13 +1,12 @@
 import typing
 from abc import ABC, abstractmethod
 
-from django.contrib.auth.models import User
-
-from apps.core.models import QueryParamsSample
+from features.authentication.models import VegaUser
+from features.core.models import QueryParamsSample
 
 
 class QueryRecommender(ABC):
 
 	@abstractmethod
-	def recommend(self, user: User) -> typing.List[QueryParamsSample]:
+	def recommend(self, user: VegaUser) -> typing.List[QueryParamsSample]:
 		pass

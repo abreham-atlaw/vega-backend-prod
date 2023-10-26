@@ -1,6 +1,10 @@
-import time
+import typing
 
-from apps.core.models import QueryParams, GenerationRequest, Song
+import time
+from datetime import datetime
+
+from features.authentication.models import VegaUser
+from features.core.models import QueryParams, GenerationRequest, Song
 from utils.generator.generator import Generator
 
 
@@ -24,8 +28,7 @@ class MockGenerator(Generator):
 
 		song = Song(
 			title="Running the Game",
-			# audio="https://www.dropbox.com/scl/fi/pct36wssa6ug85m8wdjtd/1693508148.414699.mp3?rlkey=6j41bktwj5bjltg0umyvak358&dl=0&raw=1",
-			audio="https://www.dropbox.com/scl/fi/qbb7zl2iotvwr48p218h3/1693668027.065475.mp3?rlkey=ux9yn4282i8s20neofa6n07ub&dl=0&raw=1",
+			audio="https://dl.dropboxusercontent.com/scl/fi/qbb7zl2iotvwr48p218h3/1693668027.065475.mp3?rlkey=ux9yn4282i8s20neofa6n07ub&dl=0&raw=1",
 			lyrics="""
 (Verse 1)
 Verse 1:
@@ -64,7 +67,7 @@ My rhymes so sharp, they'll leave you in a coffin, so gruesome
 I'm the king of the throne, don't you forget it
 My flow's like a drill, it'll leave you in a pit
 """,
-			cover="https://dl.dropboxusercontent.com/scl/fi/yp5goz0c3f9bezv1lrc0x/02.png?rlkey=jh8thuix6kb1n65q8cuy1em16&dl=0&raw=1",
+			cover="https://dl.dropboxusercontent.com/scl/fi/9520yjksc2gvqwsrq5shj/albumart.png?rlkey=k3g0so38wqqnb3iu5n9m47or1&dl=0&raw=1",
 		)
 		song.save()
 		request.song = song
@@ -78,3 +81,6 @@ My flow's like a drill, it'll leave you in a pit
 
 	def generate_raw_query(self, query: str, request: GenerationRequest) -> Song:
 		return self.__generate(request)
+
+	def _generate_playlist_title(self, songs: typing.List[Song], user: VegaUser) -> str:
+		return datetime.now().strftime("%d/%m/%Y")

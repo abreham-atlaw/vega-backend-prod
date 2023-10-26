@@ -1,7 +1,7 @@
 import unittest
 
-from apps.core.models import QueryParams
-from di.utils_providers import UtilsProviders
+from features.core.models import QueryParams
+from dependency_injection.utils_providers import UtilsProviders
 
 
 class GAIGeneratorTest(unittest.TestCase):

@@ -1,12 +1,14 @@
 import typing
 from threading import Thread
 
-from apps.core.models import QueryParams, GenerationRequest
+from features.core.models import QueryParams, GenerationRequest
 from utils.generator import Generator
 
 
+# GenerationThread is a class that inherits from Thread and is used to generate music in a separate thread.
 class GenerationThread(Thread):
 
+	# The constructor method takes in a generator, a generation request, query parameters, and a raw query as parameters.
 	def __init__(
 			self,
 			generator: Generator,
@@ -24,6 +26,7 @@ class GenerationThread(Thread):
 		self.__generator = generator
 		self.__request = request
 
+	# This method runs the thread.
 	def run(self) -> None:
 		if self.__query_params is not None:
 			self.__generator.generate(self.__query_params, self.__request)

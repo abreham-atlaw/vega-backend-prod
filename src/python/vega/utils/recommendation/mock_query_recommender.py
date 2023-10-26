@@ -2,7 +2,7 @@ import typing
 
 from django.contrib.auth.models import User
 
-from apps.core.models import QueryParamsSample, Lyrics, Instrumental
+from features.core.models import QueryParamsSample, Lyrics, Instrumental
 from utils.recommendation.query_recommender import QueryRecommender
 
 
