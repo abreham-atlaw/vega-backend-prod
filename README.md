@@ -24,9 +24,6 @@ This Python project has the following modules:
   - `vega`: This module contains the main application settings and configurations.
 - `manage.py`: This is a command-line utility that lets you interact with this Django project in various ways.
 
-Each of these directories contains Python files (`.py`) that define various functionalities of your project. For example, files named `__init__.py` are used to mark directories on disk as Python package directories.
-
-Please note that this is a high-level overview. Each file and directory in your project has a specific purpose and contributes to the overall functionality of your application. If you need more detailed information about a specific file or directory, feel free to ask!
 
 <h2>Purpose</h2>
 
