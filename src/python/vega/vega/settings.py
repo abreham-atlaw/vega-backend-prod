@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'vega.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'vegadb',
-        'USER': 'vega_admin',
-        'PASSWORD': 'g5QU8Xow',
-        'HOST': 'localhost',
+        'NAME': 'vega_db',
+        'USER': 'vega',
+        'PASSWORD': 'F$^c2"n#^#LU>i~',
+        'HOST': 'postgresql-vega.alwaysdata.net',
         'PORT': '',
     }
 }
