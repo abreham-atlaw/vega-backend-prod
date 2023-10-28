@@ -6,3 +6,8 @@ dropbox==11.27.0
 openai==0.28.1
 psycopg2-binary==2.9.7
 APScheduler
+cattrs==23.1.2
+pydub==0.20.0
+librosa==0.10.1
+noisereduce==3.0.0
+torch==2.1.0
