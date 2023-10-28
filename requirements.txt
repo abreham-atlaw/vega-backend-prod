@@ -1,6 +1,8 @@
 Django==4.2.4
+django-cors-headers==4.2.0
 django-filter==23.2
 djangorestframework==3.14.0
 dropbox==11.27.0
 openai==0.28.1
 psycopg2-binary==2.9.7
+APScheduler
