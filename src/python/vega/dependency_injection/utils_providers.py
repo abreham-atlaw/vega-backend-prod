@@ -9,8 +9,7 @@ class UtilsProviders:
 	@staticmethod
 	def provide_generator() -> 'Generator':
 		from utils.generator.gai_generator import GAIGenerator
-		from utils.generator.mock_generator import MockGenerator
-		return MockGenerator()
+		return GAIGenerator()
 
 	@staticmethod
 	def provide_mixer() -> 'Mixer':

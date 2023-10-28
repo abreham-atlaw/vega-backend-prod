@@ -23,7 +23,7 @@ class SongDetailView(APIView):
 class RecentSongsView(APIView):
 
 	def get(self, request: Request) -> Response:
-		songs = list(Song.objects.all())[::-1]
+		songs = Song.objects.all().order_by("-create_datetime")
 		serializer = SongSerializer(instance=songs, many=True)
 		return Response(
 			serializer.data

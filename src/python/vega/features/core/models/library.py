@@ -15,7 +15,7 @@ class Song(models.Model):
 	cover = models.URLField()
 	lyrics = models.TextField()
 	create_datetime = models.DateTimeField(auto_now_add=True)
-	duration = models.FloatField(null=True)
+	duration = models.FloatField()
 	user = models.ForeignKey(VegaUser, on_delete=models.SET_NULL, null=True, blank=True)
 
 
